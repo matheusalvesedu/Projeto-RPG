@@ -71,6 +71,7 @@ public abstract class Personagem implements Cloneable {
         verificarNivel();
     }
 
+
     public String getNome() {
         return this.nome;
     }
@@ -97,5 +98,45 @@ public abstract class Personagem implements Cloneable {
 
     public int getXpParaProxNivel() {
         return this.xpParaProxNivel;
+    }
+
+    public Inventario getInventario() {
+        return this.inventario;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setAtaque(short ataque) {
+        this.ataque = ataque;
+    }
+
+    public void setAtaqueBase(short ataqueBase) {
+        this.ataqueBase = ataqueBase;
+    }
+
+    public void setVidaMax(short vidaMax) {
+        this.vidaMax = vidaMax;
+    }
+
+    public void setVida(short vida) {
+        this.vida = vida;
+    }
+
+    public void setDefesa(short defesa) {
+        this.defesa = defesa;
+    }
+
+    public void setDefesaBase(short defesaBase) {
+        this.defesaBase = defesaBase;
+    }
+
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
     }
 }
