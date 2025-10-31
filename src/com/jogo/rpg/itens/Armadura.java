@@ -20,6 +20,12 @@ public class Armadura extends Item {
         this.equipada = false;
     }
 
+    public Armadura(Armadura a) {
+        super(a.nome, a.descricao, a.efeito, a.quantidade, a.limite);
+        this.bonusDefesa = a.bonusDefesa;
+        this.equipada = a.equipada; // Copia o estado de equipamento
+    }
+
     @Override
     public void aplicarEfeito(Personagem personagem) throws ItemException {
         if (equipada) {

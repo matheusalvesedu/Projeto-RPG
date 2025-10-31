@@ -20,6 +20,7 @@ public class Inventario implements Cloneable {
         this.capacidadeMaxima = 20;
     }
 
+    // Construtor de copia
     public Inventario(Inventario outro) {
         this.itens = new ArrayList<>();
         this.capacidadeMaxima = outro.capacidadeMaxima;
@@ -27,6 +28,8 @@ public class Inventario implements Cloneable {
             this.itens.add(item.clone());
         }
     }
+
+
 
     public void adicionarItem(Item novoItem) throws ItemException {
         if (novoItem == null) {

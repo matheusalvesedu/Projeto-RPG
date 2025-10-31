@@ -10,7 +10,7 @@ public class Arma extends Item {
     public Arma(String nome, String descricao, String efeito, int ataqueBonus,
                 Integer quantidade, Integer limite) {
 
-        // Chama o construtor da classe pai (Item)
+
         super(nome, descricao, efeito, quantidade, limite);
         this.ataqueBonus = ataqueBonus;
     }
@@ -19,6 +19,15 @@ public class Arma extends Item {
         // Armas são únicas, então quantidade e limite = 1
         super(nome, descricao, "Aumenta o ataque em " + ataqueBonus, 1, 1);
         this.ataqueBonus = ataqueBonus;
+    }
+
+    public Arma(Arma a) {
+        // 1. Chama o construtor da superclasse (Item) para copiar
+        //    os atributos herdados (nome, descricao, efeito, quantidade, limite).
+        super(a.nome, a.descricao, a.efeito, a.quantidade, a.limite);
+
+        // 2. Copia o atributo específico da classe Arma.
+        this.ataqueBonus = a.ataqueBonus;
     }
 
     @Override

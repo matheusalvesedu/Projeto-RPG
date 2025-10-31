@@ -16,6 +16,13 @@ public class Pocao extends Item {
         this.valorCura = valorCura;
     }
 
+    //construtor de copia
+    public Pocao(Pocao p) {
+
+        super(p.nome, p.descricao, p.efeito, p.quantidade, p.limite);
+        this.valorCura = p.valorCura;
+    }
+
     @Override
     public void aplicarEfeito(Personagem personagem) throws ItemException {
         short vidaAntes = personagem.getVida();

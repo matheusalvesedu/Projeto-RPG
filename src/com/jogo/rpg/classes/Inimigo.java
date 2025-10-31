@@ -9,6 +9,13 @@ public class Inimigo extends Personagem {
         this.dropDeXp = dropDeXp;
     }
 
+
+    // construtor de copu
+    public Inimigo(Inimigo i) {
+        super(i.nome, i.vida, i.ataque, i.defesa, i.nivel);
+        this.dropDeXp = i.dropDeXp;
+    }
+
     public int getDropDeXp() {
         return dropDeXp;
     }

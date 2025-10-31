@@ -172,7 +172,6 @@ public class Batalha {
         System.out.println("\n🏃 Tentando fugir...");
         int chanceFuga = Dado.rolarDado();
         System.out.println("🎲 Rolou: " + chanceFuga + " (precisa 4+)");
-
         return chanceFuga >= 4; // 50% de chance (4, 5 ou 6)
     }
 }
