@@ -9,13 +9,14 @@ public class Arma extends Item {
 
     public Arma(String nome, String descricao, String efeito, int ataqueBonus,
                 Integer quantidade, Integer limite) {
+
         // Chama o construtor da classe pai (Item)
         super(nome, descricao, efeito, quantidade, limite);
         this.ataqueBonus = ataqueBonus;
     }
 
     public Arma(String nome, String descricao, int ataqueBonus) {
-        // Armas geralmente são únicas, então quantidade e limite = 1
+        // Armas são únicas, então quantidade e limite = 1
         super(nome, descricao, "Aumenta o ataque em " + ataqueBonus, 1, 1);
         this.ataqueBonus = ataqueBonus;
     }

@@ -46,7 +46,7 @@ public abstract class Personagem implements Cloneable {
     public void curarVida(int vida) {
         if(vida < 0) vida = 0;
         this.vida += vida;
-        if(this.vida > this.vidaMax) vida = this.vidaMax;
+        if(this.vida > this.vidaMax) this.vida = this.vidaMax;
     }
 
     public void subirNivel(){
@@ -72,21 +72,23 @@ public abstract class Personagem implements Cloneable {
     }
 
 
+    public short getVidaMax() {return this.vidaMax; };
+
     public String getNome() {
         return this.nome;
-    }
+    };
 
     public short getVida() {
         return this.vida;
-    }
+    };
 
     public short getAtaque() {
         return this.ataque;
-    }
+    };
 
     public short getDefesa() {
         return this.defesa;
-    }
+    };
 
     public Integer getNivel() {
         return this.nivel;
@@ -139,4 +141,20 @@ public abstract class Personagem implements Cloneable {
     public void setXp(int xp) {
         this.xp = xp;
     }
+
+    @Override
+    public String toString() {
+        return "\n🧙 PERSONAGEM" +
+                "\n--------------------------" +
+                "\nNome: " + nome +
+                "\nVida: " + vida + "/" + vidaMax +
+                "\nAtaque: " + ataque +
+                "\nDefesa: " + defesa +
+                "\nNível: " + nivel +
+                "\nXP: " + xp +
+                "\n--------------------------";
+    }
+
+
+
 }

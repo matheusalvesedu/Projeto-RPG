@@ -245,7 +245,7 @@ public class Inventario implements Cloneable {
             return;
         }
 
-        Item item = itens.get(escolha - 1);
+        Item item = itens.get(escolha - 1); // -1, pois no menu mostrado ao jogador começa pelo 1, mas o indice é o anterior
 
         if (!item.podeUsar()) {
             System.out.println("❌ Este item não pode ser usado!");
