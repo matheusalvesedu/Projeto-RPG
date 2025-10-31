@@ -92,7 +92,7 @@ public class Navegacao {
 
     private void mostrarInventario() {
         System.out.println("\n🎒 INVENTÁRIO:");
-        jogador.getInventario().listarItens();
+        jogador.getInventario().abrirInventario(jogador);
     }
 
     private void mostrarStatus() {
