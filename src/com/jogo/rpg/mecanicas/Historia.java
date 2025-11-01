@@ -1,5 +1,8 @@
 package com.jogo.rpg.mecanicas;
 
+import com.jogo.rpg.classes.Personagem;
+import com.jogo.rpg.eventos.Evento;
+import com.jogo.rpg.itens.CatalogoItens;
 import com.jogo.rpg.utils.Input;
 
 public class Historia {
@@ -32,118 +35,126 @@ public class Historia {
         return nome;
     }
 
-    public void introducao(String nomeJogador) {
+    public void tutorial(Personagem jogador) throws Exception {
         System.out.println("\n--------------------------------------------------------");
-        System.out.println("\nBem-vindo(a), " + nomeJogador + ".");
-        System.out.println("Você vive no Reino de Cairon, um lugar governado com mão de ferro pelo Rei... ");
-        System.out.println("...e assombrado pela lenda do Ogro Zak, 'O Devorador de Reis'.");
-        System.out.println("Dizem que o antigo exército do Rei mal conseguiu prender a fera");
-        System.out.println("nas masmorras profundas abaixo do castelo, onde ela definha há décadas.");
-        System.out.println("As crianças são avisadas: 'Seja bom, ou Orc virá buscá-lo'.");
-        System.out.println("Para você, sempre foi apenas uma história de ninar macabra.");
-        System.out.println("Até hoje.");
+        System.out.println("Você acabou de realizar uma entrega no Bar do Messias.");
+        System.out.println("Messias, o dono do bar, agradece pelo serviço e joga uma moeda sobre o balcão.");
+        System.out.println("Bom trabalho " + jogador.getNome() + ". Mas se fosse você, não ficava por aqui essa hora...");
+        System.out.println("\nDo lado de fora, a noite cai sobre a cidade. Uma brisa fria sopra pela porta entreaberta.");
+        System.out.println("Há duas opções: ficar no bar e descansar um pouco, ou sair e seguir pela viela ao lado.");
+        System.out.println("Dizem que é perigosa, mas também é o caminho mais rápido de volta para casa.");
+        System.out.println("\n[1] Ficar no bar por mais um tempo");
+        System.out.println("[2] Ir embora pela viela");
+        System.out.println("Escolha uma opção: ");
+
+        int opcao = Input.getUmInt();
+
+        if(opcao == 1) {
+            System.out.println("\n\n\n\n\n\nVocê decide ficar mais um pouco, mas nada de interessante acontece.");
+            System.out.println("O bar começa a esvaziar, e você percebe que está ficando tarde demais.");
+            System.out.println("Só resta uma opção, ir embora pela viela.");
+            Thread.sleep(3000);
+        }
+
+        System.out.println("\n--------------------------------------------------------");
+        System.out.println("Você entra na viela escura. O som do bar se distancia.");
+        System.out.println("As luzes se apagam uma a uma, e tudo o que resta é o eco dos seus passos.");
+        Thread.sleep(2000);
+        System.out.println("De repente, uma voz rouca interrompe o silêncio:");
+        Thread.sleep(2000);
+        System.out.println("“Ei... tem umas moedas aí pra compartilhar?”");
+        Thread.sleep(2000);
+        System.out.println("Um homem cambaleante surge das sombras. O cheiro de bebida é forte.");
+        System.out.println("É um BÊBADO BRIGUENTO!");
+        Thread.sleep(2000);
+        System.out.println("Ele se aproxima, tropeçando, mas com o punho cerrado.");
+        System.out.println("\nPrepare-se para o seu primeiro combate!");
+        System.out.println("--------------------------------------------------------");
+
+        Evento.entrarNaViela(jogador);
+        if(jogador.getVida() <= 0) {
+            return;
+        }
+
+        System.out.println("O bêbado agora está caido no chão, melhor sair dai antes que aparecam outros.");
+        System.out.println("Você ve uma caixa de madeira no canto, deseja vasculhar?");
+        System.out.println("\n[1] Vasculhar a caixa");
+        System.out.println("[2] Ir para casa");
+
+        opcao = Input.getUmInt();
+
+        if(opcao == 1) {
+            System.out.println("\n\n\n\n\n\nVocê se aproxima da caixa e examina com cuidado...");
+            Thread.sleep(2000);
+            System.out.println("Com um estalo, a tampa se abre, dentro há três pequenos frascos vermelhos!");
+            Thread.sleep(2000);
+            System.out.println("🧪 Você encontrou 3 Poções de Cura!");
+
+            for (int i = 0; i < 3; i++) {
+                jogador.getInventario().adicionarItem(CatalogoItens.getItem("pocao_cura"));
+            }
+
+            System.out.println("\nVocê guarda as poções com cuidado na sua bolsa.");
+            Thread.sleep(2500);
+        }
+
+        System.out.println("Você chegou em casa, descanse pois amanhã tem uma entrega importante para o prefeito.");
     }
 
-    public void chamadoReal() {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("Um arauto real, com o brasão do Rei Doido, bate à sua porta improvisada.");
-        System.out.println("Seu estômago gela. Pessoas como você só são chamadas ao castelo por um motivo...");
-        System.out.println("\n'O Rei Doido exige sua presença', diz o guarda, sem cerimônia.");
-        System.out.println("'Uma missão de grande honra foi designada a você.'");
-        System.out.println("Você engole em seco. 'Honra' é uma palavra que os nobres usam muito antes de");
-        System.out.println("mandar alguém para a morte.");
-        System.out.println("Você é levado pelos corredores frios do castelo...");
+    public void irParaMercado() throws InterruptedException {
+        System.out.println("\nVocê sai de casa correndo na direção do Mercado Central.");
+        Thread.sleep(1500);
+        System.out.println("Já passou do meio dia, o sol quente ilumina as ruas estreitas da cidade.");
+        Thread.sleep(1500);
     }
 
-    public void aMissaoFalsa(String nomeJogador) {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("O salão do trono é vasto e escuro. O Rei Doido está sentado no trono,");
-        System.out.println("seu rosto escondido nas sombras, exceto por um sorriso fino.");
-        System.out.println("\n'Então este é " + nomeJogador + ". O(A) sobrevivente das ruas', diz ele, com desdém.");
-        System.out.println("'Temos um problema. Um ninho de goblins tem atacado as rotas de suprimento.");
-        System.out.println("Eles se escondem nas catacumbas antigas, perto das masmorras.'");
-        System.out.println("\n'Leve este destacamento', ele gesticula para 4 guardas de elite. 'Limpe o ninho.'");
-        System.out.println("'Seu sucesso trará glória... e talvez um lugar melhor que as sarjetas.'");
-        System.out.println("O sorriso dele não alcança seus olhos.");
+    public void mercadoCentral() throws InterruptedException {
+        System.out.println("\nVocê chega ao Mercado Central. O barulho das barracas e das negociações toma conta do ambiente.");
+        Thread.sleep(1500);
+        System.out.println("Entre vendedores e clientes, você localiza o ajudante do prefeito com a encomenda pronta.");
+        Thread.sleep(1500);
+
+        System.out.println("\nAjudante do prefeito: \"Ah, você deve ser o entregador do dia! Aqui está o pacote que deve ser entregue à Casa do Prefeito.\"");
+        Thread.sleep(1500);
+        System.out.println("Você pega cuidadosamente o pacote e confere se está tudo em ordem.");
+        Thread.sleep(1500);
+
+        System.out.println("📦 Entrega recebida! Agora é hora de seguir para a Casa do Prefeito.");
+        Thread.sleep(1500);
     }
 
-    public void aEmboscada() {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("Os guardas o levam para as profundezas úmidas do castelo.");
-        System.out.println("Não há goblins. Apenas o cheiro de mofo e desespero.");
-        System.out.println("Vocês chegam a um grande portão de ferro. O capitão se vira para você.");
-        System.out.println("\n'O Rei manda lembranças', diz ele, enquanto os outros sacam suas espadas.");
-        System.out.println("'Ordens do Rei! Matem-no e joguem o corpo no fosso!'");
-        System.out.println("\nÉ UMA EMBOSCADA!");
-        // <-- CHAMADA PARA O MÉTODO DE BATALHA (Jogador vs Guardas) -->
+    public void irParaPrefeito() throws InterruptedException {
+        System.out.println("\nVocê começa a caminhar pelas ruas da cidade em direção à Casa do Prefeito.");
+        Thread.sleep(1500);
+        System.out.println("A rua está relativamente calma, mas você sabe que em qualquer viela pode haver problemas.");
+        Thread.sleep(1500);
+        System.out.println("Você segura firme o pacote e mantém os olhos atentos a qualquer movimento suspeito.");
+        Thread.sleep(1500);
+        System.out.println("\nDe repente, um homem encapuzado bloqueia o seu caminho em uma rua estreita.");
+        Thread.sleep(1500);
+        System.out.println("Bandido: \"Ei, rapaz! Entrega aí! Não quero te machucar, só quero o pacote...\"");
+        Thread.sleep(1500);
 
-        System.out.println("\n...Após uma luta brutal, você está ferido. O último guarda, morrendo, ri.");
-        System.out.println("'Tolo... o Rei não queria você morto... ainda. Ele queria você... aqui.'");
-        System.out.println("O guarda puxa uma alavanca. O chão sob seus pés se abre.");
-        System.out.println("Você cai na escuridão total.");
+        System.out.println("\nVocê percebe que ele está armado com uma adaga enferrujada e que não parece ter boas intenções.");
+        Thread.sleep(1500);
+        System.out.println("Prepare-se para a batalha!");
+        Thread.sleep(1000);
     }
 
-    public void nasMasmorras() {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("...Você acorda em pedra fria. O ar é fétido, cheira a sangue e carne podre.");
-        System.out.println("Seu equipamento se foi... exceto por uma adaga e uma poção que estavam");
-        System.out.println("escondidas em sua bota. (Inventário Atualizado!)");
-        System.out.println("\nUm rugido gutural ecoa, sacudindo a poeira do teto.");
-        System.out.println("Do outro lado de uma vasta arena de ossos, dois olhos vermelhos se abrem na escuridão.");
-        System.out.println("A lenda é real. Orc está aqui.");
-        System.out.println("Você não foi jogado aqui para morrer. Você foi jogado aqui como... alimento.");
-        System.out.println("Orc se levanta, sua sombra cobrindo toda a sala.");
-        System.out.println("'CARNE FRESCA...', ruge a criatura.");
+    public void casaPrefeito() throws InterruptedException {
+        System.out.println("\nFinalmente, você chega à Casa do Prefeito, um prédio imponente no centro da cidade.");
+        Thread.sleep(1500);
+        System.out.println("Guardas olham para você com curiosidade, mas permitem a passagem após verem o pacote.");
+        Thread.sleep(1500);
+
+        System.out.println("\nPrefeito: \"Ah, vejo que trouxe a encomenda. Muito bem! Um pouco atrasado... porém entregou.\"");
+        Thread.sleep(1500);
+        System.out.println("Ele sorri e lhe entrega algumas moedas como recompensa pelo serviço.");
+        Thread.sleep(1500);
+
+        System.out.println("\nMissão concluída! Você a entrega com sucesso.");
+        Thread.sleep(1500);
     }
 
-    public void vitoriaSobreOgro() {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("Com um último golpe desesperado, Orc cai de joelhos, e então desaba.");
-        System.out.println("O silêncio é ensurdecedor.");
-        System.out.println("Você recupera o fôlego, exausto. Ao se aproximar da criatura caída,");
-        System.out.println("você nota algo estranho.");
-        System.out.println("\nPreso em sua armadura rústica, há um pedaço de pano bordado.");
-        System.out.println("É um brasão. O brasão da antiga família real, que todos pensavam estar extinta.");
-        System.out.println("O Ogro... ele não era um monstro qualquer. Ele era o último guardião.");
-        System.out.println("\nEm sua mão gigante e fechada, ele segura um medalhão.");
-        System.out.println("Você o abre. Dentro... está o mesmo símbolo da sua marca de nascença.");
-    }
 
-    public void aFugaEConfronto() {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("O medalhão... a marca... o brasão. A verdade o atinge como um raio.");
-        System.out.println("O Ogro não estava preso. Ele estava *protegendo* esta câmara.");
-        System.out.println("Você encontra uma passagem secreta atrás do 'trono' de ossos do Ogro.");
-        System.out.println("Ela sobe, e sobe... até que você chuta uma grade e cai no salão do trono.");
-        System.out.println("\nO Rei Doido está lá, comemorando com sua corte.");
-        System.out.println("Ele congela ao vê-lo. O sangue do ogro cobre você.");
-        System.out.println("'IMPOSSÍVEL!', ele grita. 'Ninguém sobrevive ao Guardião!'");
-    }
-
-    public void aRevelacao(String nomeJogador) {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("'Guardião?', você pergunta, sua voz rouca de fúria.");
-        System.out.println("Você joga o medalhão com o brasão real aos pés do trono.");
-        System.out.println("\nO Rei Doido recua como se tivesse sido queimado.");
-        System.out.println("'Então... você sabe.'");
-        System.out.println("'Eu tentei tanto', ele sibila, seu rosto se contorcendo de ódio.");
-        System.out.println("'Papai sempre disse que você era o especial, mesmo sendo o mais novo.'");
-        System.out.println("'Mesmo quando eu orquestrei a 'Praga' para limpar a linha de sucessão...'");
-        System.out.println("'...o Velho Ogro, leal até o fim, conseguiu contrabandear você para fora do castelo.'");
-        System.out.println("\nO Rei se levanta do trono, tirando a coroa e revelando a *mesma* marca de nascença que você.");
-        System.out.println("'Eu sou o primogênito. O trono é meu por direito!', ele grita.");
-        System.out.println("'Você não é " + nomeJogador + ", o órfão.'");
-        System.out.println("\n'Você é o Príncipe Perdido. E eu sou seu irmão mais velho.'");
-        System.out.println("'E agora', ele diz, sacando sua lâmina banhada em veneno, 'EU VOU TERMINAR O QUE COMECEI.'");
-    }
-
-    public void finalAto1() {
-        System.out.println("\n--------------------------------------------------------");
-        System.out.println("O Rei Doido avança.");
-        System.out.println("Os guardas da corte cercam você. A batalha pela sua vida,");
-        System.out.println("pelo seu nome e pelo futuro do Reino Doido...");
-        System.out.println("...está apenas começando.");
-        System.out.println("\n[FIM DO ATO I - PREPARE-SE PARA A BATALHA FINAL!]");
-        // <-- CHAMADA PARA A BATALHA FINAL (Jogador vs Rei) -->
-    }
 }

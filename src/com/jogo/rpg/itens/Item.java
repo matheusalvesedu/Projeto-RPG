@@ -18,23 +18,12 @@ public abstract class Item implements Comparable<Item>, Cloneable {
         this.limite = limite;
     }
 
-    protected Item() {
-    }
+    protected Item() { }
 
-    /**
-     * Método abstrato que define o comportamento ao usar o item
-     * Deve ser implementado por cada tipo de item específico
-     */
     public abstract void aplicarEfeito(Personagem personagem) throws ItemException;
 
-    /**
-     * Método abstrato para obter o tipo do item
-     */
     public abstract String getTipo();
 
-    /**
-     * Usa o item, aplicando seu efeito e diminuindo a quantidade
-     */
     public void usarItem(Personagem personagem) throws ItemException {
         if (this.quantidade <= 0) {
             throw new ItemException("Item " + nome + " esgotado!");
@@ -44,9 +33,6 @@ public abstract class Item implements Comparable<Item>, Cloneable {
         this.quantidade--;
     }
 
-    /**
-     * Adiciona quantidade ao item respeitando o limite
-     */
     public void adicionarQuantidade(int qtd) throws ItemException {
         if (this.quantidade + qtd > limite) {
             throw new ItemException("Limite do item excedido! Máximo: " + limite);
@@ -54,23 +40,14 @@ public abstract class Item implements Comparable<Item>, Cloneable {
         this.quantidade += qtd;
     }
 
-    /**
-     * Verifica se o item pode ser usado
-     */
     public boolean podeUsar() {
         return this.quantidade > 0;
     }
 
-    /**
-     * Verifica se está no limite máximo
-     */
     public boolean estaNoLimite() {
         return this.quantidade >= this.limite;
     }
 
-    /**
-     * Retorna informações detalhadas do item
-     */
     public String getInformacaoCompleta() {
         StringBuilder info = new StringBuilder();
         info.append("═══════════════════════════════\n");
@@ -166,6 +143,3 @@ public abstract class Item implements Comparable<Item>, Cloneable {
     @Override
     public abstract Item clone();
 }
-
-
-

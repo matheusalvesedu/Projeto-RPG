@@ -7,10 +7,7 @@ public class Arma extends Item {
     // Atributo específico da classe Arma
     private int ataqueBonus;
 
-    public Arma(String nome, String descricao, String efeito, int ataqueBonus,
-                Integer quantidade, Integer limite) {
-
-
+    public Arma(String nome, String descricao, String efeito, Integer quantidade, Integer limite, int ataqueBonus) {
         super(nome, descricao, efeito, quantidade, limite);
         this.ataqueBonus = ataqueBonus;
     }
@@ -22,11 +19,8 @@ public class Arma extends Item {
     }
 
     public Arma(Arma a) {
-        // 1. Chama o construtor da superclasse (Item) para copiar
-        //    os atributos herdados (nome, descricao, efeito, quantidade, limite).
         super(a.nome, a.descricao, a.efeito, a.quantidade, a.limite);
 
-        // 2. Copia o atributo específico da classe Arma.
         this.ataqueBonus = a.ataqueBonus;
     }
 
@@ -44,39 +38,19 @@ public class Arma extends Item {
         }
     }
 
-    /**
-     * Retorna o tipo do item.
-     *
-     * @return String "Arma"
-     */
     @Override
     public String getTipo() {
         return "Arma";
     }
 
-    /**
-     * Retorna o bônus de ataque da arma.
-     *
-     * @return Valor do bônus de ataque
-     */
     public int getAtaqueBonus() {
         return ataqueBonus;
     }
 
-    /**
-     * Define um novo valor para o bônus de ataque.
-     *
-     * @param ataqueBonus Novo valor de bônus de ataque
-     */
     public void setAtaqueBonus(int ataqueBonus) {
         this.ataqueBonus = ataqueBonus;
     }
 
-    /**
-     * Cria uma cópia exata da arma (padrão Prototype).
-     *
-     * @return Nova instância de Arma com os mesmos atributos
-     */
     @Override
     public Item clone() {
         return new Arma(
@@ -89,11 +63,6 @@ public class Arma extends Item {
         );
     }
 
-    /**
-     * Retorna informações detalhadas da arma incluindo o bônus de ataque.
-     *
-     * @return String formatada com todas as informações da arma
-     */
     @Override
     public String getInformacaoCompleta() {
         StringBuilder info = new StringBuilder();
@@ -109,11 +78,6 @@ public class Arma extends Item {
         return info.toString();
     }
 
-    /**
-     * Retorna uma representação em String simplificada da arma.
-     *
-     * @return String no formato "Arma: Nome (+BonusAtaque) xQuantidade"
-     */
     @Override
     public String toString() {
         return getTipo() + ": " + nome + " (+" + ataqueBonus + " ATK) x" + quantidade;

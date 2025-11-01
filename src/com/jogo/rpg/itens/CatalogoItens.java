@@ -8,11 +8,9 @@ public class CatalogoItens {
     private static final Map<String, Item> itens = new HashMap<>();
 
     static {
-        itens.put("pocao_cura", new Pocao("Poção de Cura", 20,1 ));
-        itens.put("espada_inicial", new Arma("Espada de Madeira", "Arma simples, mas funcional, +5 de dano ", 5));
+        itens.put("pocao_cura", new Pocao("Poção de Cura", 20,1));
         itens.put("armadura_couro", new Armadura("Armadura de Couro", 3));
     }
-
 
     // Retorna uma cópia nova para evitar modificar o item base
     public static Item getItem(String chave) {

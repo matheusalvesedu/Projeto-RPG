@@ -29,8 +29,6 @@ public class Inventario implements Cloneable {
         }
     }
 
-
-
     public void adicionarItem(Item novoItem) throws ItemException {
         if (novoItem == null) {
             throw new ItemException("Não é possível adicionar item null");
@@ -44,7 +42,7 @@ public class Inventario implements Cloneable {
         int limite = novoItem.getLimite();
 
         // Tenta empilhar em slots existentes
-        for (Item existente : itens) {
+        for (Item existente : itens) { // Loop para procurar item igual no invetário
             if (existente.equals(novoItem)) {
                 int espacoDisponivel = limite - existente.getQuantidade();
 
@@ -62,7 +60,7 @@ public class Inventario implements Cloneable {
         }
 
         // Cria novos slots se necessário
-        while (quantidadeRestante > 0) {
+        while (quantidadeRestante > 0) { // Se não achar o item ou der o limite de itens no slot.
             if (itens.size() >= capacidadeMaxima) {
                 throw new ItemException("Inventário cheio! Não foi possível adicionar " + quantidadeRestante + " unidades de " + novoItem.getNome());
             }
@@ -74,7 +72,7 @@ public class Inventario implements Cloneable {
             quantidadeRestante -= adicionar;
         }
 
-        System.out.println("✓ Adicionado: " + novoItem.getNome() + " x" + novoItem.getQuantidade());
+        System.out.println("Adicionado: " + novoItem.getNome() + " x" + novoItem.getQuantidade());
     }
 
     public void removerItem(String nome, int quantidade) throws ItemException {
@@ -109,11 +107,11 @@ public class Inventario implements Cloneable {
 
     public void listarItens() {
         if (itens.isEmpty()) {
-            System.out.println("\n📦 Inventário vazio!");
+            System.out.println("\nInventário vazio!");
             return;
         }
 
-        System.out.println("\n📦 === INVENTÁRIO === 📦");
+        System.out.println("\n📦 === | INVENTÁRIO | === 📦");
         System.out.println("Slots usados: " + itens.size() + "/" + capacidadeMaxima);
         System.out.println("─────────────────────────────");
 

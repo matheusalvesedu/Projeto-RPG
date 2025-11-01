@@ -5,6 +5,7 @@ import com.jogo.rpg.itens.ItemException;
 import com.jogo.rpg.utils.Input;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Local {
     private String nome;
@@ -18,45 +19,17 @@ public class Local {
         this.tipoEvento = tipoEvento;
     }
 
-    public void setProximoLugares(List<Local> proximoLugares) {
-        this.proximoLugares = proximoLugares;
-    }
-
-    public List<Local> getProximoLugares() {
-        return proximoLugares;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public String getTipoEvento() {
-        return tipoEvento;
-    }
-
-    public void entrar(Personagem jogador) {
-        System.out.println("\n🏞️ Você chegou em: " + nome);
+    public void entrar(Personagem jogador) throws InterruptedException {
+        System.out.println("\nVocê chegou em: " + nome);
         System.out.println(descricao);
 
         // Executa o evento do lugar
         if (tipoEvento != null) {
             switch (tipoEvento) {
-                case "inimigo" -> Evento.encontrarInimigo(jogador);
-                case "item" -> {
-                    try {
-                        Evento.encontrarItem(jogador);
-                    } catch (ItemException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                case "igreja" -> Evento.entrarIgreja(jogador);
-                case "casa" -> Evento.entrarCasa(jogador);
-                case "castelo" -> Evento.entrarCastelo(jogador);
-                case "aleatorio" -> Evento.eventoAleatorio(jogador);
+                case "irParaMercado" -> Evento.irParaMercado();
+                case "mercadoCentral" -> Evento.mercadoCentral();
+                case "irParaPrefeito" -> Evento.irParaPrefeito(jogador);
+                case "casaPrefeito" -> Evento.casaPrefeito(jogador);
             }
         }
 
@@ -100,5 +73,43 @@ public class Local {
             System.out.println("Escolha inválida, permanecendo no lugar atual.");
             entrar(jogador); // repete o mesmo lugar
         }
+    }
+
+    public void setProximoLugares(List<Local> proximoLugares) {
+        this.proximoLugares = proximoLugares;
+    }
+
+    public List<Local> getProximoLugares() {
+        return proximoLugares;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getTipoEvento() {
+        return tipoEvento;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + descricao;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Local)) return false;
+        Local local = (Local) o;
+        return Objects.equals(nome, local.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
     }
 }

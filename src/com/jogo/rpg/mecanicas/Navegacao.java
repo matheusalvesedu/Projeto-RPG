@@ -14,16 +14,16 @@ public class Navegacao {
         this.LocalAtual = LocalInicial;
     }
 
-    public void iniciar() {
+    public void iniciar() throws InterruptedException {
         boolean jogando = true;
         String escolha;
 
         while (jogando) {
             System.out.println("\nO que deseja fazer?");
-            System.out.println("1️⃣  Explorar / Avançar");
-            System.out.println("2️⃣  Ver Inventário");
-            System.out.println("3️⃣  Ver Status");
-            System.out.println("4️⃣  Sair do jogo");
+            System.out.println("[1] Explorar / Avançar");
+            System.out.println("[2] Ver Inventário");
+            System.out.println("[3] Ver Status");
+            System.out.println("[0] Sair do jogo");
             System.out.print("> ");
 
             escolha = Input.getUmString().trim();
@@ -43,25 +43,25 @@ public class Navegacao {
                 case "3":
                     mostrarStatus();
                     break;
-                case "4":
-                    System.out.println("👋 Saindo do jogo...");
+                case "0":
+                    System.out.println("Saindo do jogo...");
                     jogando = false;
                     break;
                 default:
-                    System.out.println("❌ Opção inválida!");
+                    System.out.println("Opção inválida!");
             }
         }
     }
 
-    private void navegar() {
+    private void navegar() throws InterruptedException {
         if (LocalAtual.getProximoLugares().isEmpty()) {
-            System.out.println("🌄 Não há mais locais para explorar daqui!");
+            System.out.println("Não há mais locais para explorar daqui!");
             return;
         }
 
-        System.out.println("\n🌍 Locais disponíveis:");
+        System.out.println("\nLocais disponíveis:");
         for (int i = 0; i < LocalAtual.getProximoLugares().size(); i++) {
-            System.out.println((i + 1) + "️⃣  " + LocalAtual.getProximoLugares().get(i).getNome());
+            System.out.println((i + 1) + "️⃣ " + LocalAtual.getProximoLugares().get(i).getNome());
         }
 
         System.out.print("Escolha um local para ir: ");
@@ -86,7 +86,7 @@ public class Navegacao {
         }
 
         LocalAtual = LocalAtual.getProximoLugares().get(opcao);
-        System.out.println("\n➡️ Você viajou para " + LocalAtual.getNome() + "...");
+        System.out.println("\nIndo para " + LocalAtual.getNome() + "...");
         LocalAtual.entrar(jogador);
     }
 

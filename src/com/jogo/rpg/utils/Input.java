@@ -19,18 +19,6 @@ public class Input {
         return ret;
     }
 
-    public static byte getUmByte() throws Exception {
-        byte ret = (byte)0;
-        try {
-            ret = Byte.parseByte(input.readLine());
-        } catch (IOException erro) { /*Sem erro*/ }
-        catch(NumberFormatException erro) {
-            throw new Exception("Byte Inválido!");
-        }
-
-        return ret;
-    }
-
     public static short getUmShort() throws Exception {
         short ret = (short)0;
 

@@ -32,7 +32,7 @@ public class Batalha {
                 System.out.println("\n╔═══════════════════════════════════════╗");
                 System.out.println("║         TURNO DO JOGADOR              ║");
                 System.out.println("╠═══════════════════════════════════════╣");
-                System.out.println("║ [1] ⚔️  Atacar                        ║");
+                System.out.println("║ [1] ⚔️ Atacar                         ║");
                 System.out.println("║ [2] 🎒 Usar Inventário                ║");
                 System.out.println("║ [3] 🏃 Tentar Fugir                   ║");
                 System.out.println("╚═══════════════════════════════════════╝");
@@ -172,6 +172,6 @@ public class Batalha {
         System.out.println("\n🏃 Tentando fugir...");
         int chanceFuga = Dado.rolarDado();
         System.out.println("🎲 Rolou: " + chanceFuga + " (precisa 4+)");
-        return chanceFuga >= 4; // 50% de chance (4, 5 ou 6)
+        return chanceFuga >= 11; // 50% de chance (4, 5 ou 6)
     }
 }

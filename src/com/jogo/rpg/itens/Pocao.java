@@ -12,7 +12,7 @@ public class Pocao extends Item {
     }
 
     public Pocao(String nome, int valorCura, Integer quantidade) {
-        super(nome, "Uma poção que restaura pontos de vida", "Restaura " + valorCura + " HP", quantidade, 99);
+        super(nome, "Uma poção que restaura pontos de vida", "Restaura " + valorCura + " HP", quantidade, 5);
         this.valorCura = valorCura;
     }
 
@@ -31,7 +31,7 @@ public class Pocao extends Item {
         int curaReal = vidaDepois - vidaAntes;
 
         System.out.println("🧪 " + personagem.getNome() + " bebeu " + nome + "!");
-        System.out.println("   HP restaurado: " + curaReal + " (" + vidaDepois + "/" + personagem.getVida() + ")");
+        System.out.println("HP restaurado: " + curaReal + " (" + vidaDepois + "/" + personagem.getVida() + ")");
     }
 
     @Override

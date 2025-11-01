@@ -55,6 +55,7 @@ public abstract class Personagem implements Cloneable {
         this.vida += 10;
         this.ataque += 2;
         this.defesa += 2;
+        System.out.println("Você subiu para o nivel: " + this.nivel);
     }
 
     public void verificarNivel() {
@@ -67,6 +68,7 @@ public abstract class Personagem implements Cloneable {
 
     public void ganharXp(int quantidade) {
         this.xp += quantidade;
+        System.out.println("Você ganhou " + quantidade + " de XP!");
 
         verificarNivel();
     }
@@ -86,9 +88,13 @@ public abstract class Personagem implements Cloneable {
         return this.ataque;
     };
 
+    public short getAtaqueBase() { return this.ataqueBase; };
+
     public short getDefesa() {
         return this.defesa;
     };
+
+    public short getDefesaBase() { return this.defesaBase; };
 
     public Integer getNivel() {
         return this.nivel;
@@ -110,20 +116,20 @@ public abstract class Personagem implements Cloneable {
         this.nome = nome;
     }
 
-    public void setAtaque(short ataque) {
-        this.ataque = ataque;
-    }
-
-    public void setAtaqueBase(short ataqueBase) {
-        this.ataqueBase = ataqueBase;
+    public void setVida(short vida) {
+        this.vida = vida;
     }
 
     public void setVidaMax(short vidaMax) {
         this.vidaMax = vidaMax;
     }
 
-    public void setVida(short vida) {
-        this.vida = vida;
+    public void setAtaque(short ataque) {
+        this.ataque = ataque;
+    }
+
+    public void setAtaqueBase(short ataqueBase) {
+        this.ataqueBase = ataqueBase;
     }
 
     public void setDefesa(short defesa) {
@@ -154,7 +160,5 @@ public abstract class Personagem implements Cloneable {
                 "\nXP: " + xp +
                 "\n--------------------------";
     }
-
-
 
 }
